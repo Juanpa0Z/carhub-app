@@ -8,6 +8,9 @@ const app = express()
 
 
 app.use(express.json())
+
+app.get('/',(req,res) => res.send('Working Api...'))
+
 app.get('/makes', async (req, res) => {
 
     try {
