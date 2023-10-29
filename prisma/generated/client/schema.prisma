@@ -1,0 +1,51 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+model Cars {
+  cardId               String      @id @unique @default(cuid())
+  carMake              CarsMakes?  @relation(fields: [carsMakesCarMakeId], references: [carMakeId])
+  carModel             CarsModels? @relation(fields: [carsModelsCarModelId], references: [carModelId])
+  carYear              Int
+  transmitionTypes     String[]
+  driveTrains          String[]
+  carDescription       String
+  carImageUrl          String
+  motorFuelTypes       String[]
+  carAcceleration      String
+  accelarationTime     String
+  speedMax             String
+  averageConsumption   String
+  deviceCapacity       String
+  numberOfDoors        String
+  carDimensions        String
+  carTrunkVolume       String
+  carWeight            String
+  maximumPower         String
+  motorWatts           String
+  carsMakesCarMakeId   Int
+  carsModelsCarModelId Int
+}
+
+model CarsMakes {
+  carMakeId Int    @id @unique @default(autoincrement())
+  name      String
+  createdAt DateTime? @default(now())
+  Cars      Cars[]
+  Models CarsModels[]
+}
+
+model CarsModels {
+  carModelId Int    @id @unique @default(autoincrement())
+  carMakeId Int
+  name       String
+  createdAt  DateTime? @default(now())
+  carMake  CarsMakes?  @relation(fields: [carMakeId], references: [carMakeId])
+  Cars       Cars[]
+}
