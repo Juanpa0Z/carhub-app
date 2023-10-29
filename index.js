@@ -7,7 +7,7 @@ import url from 'url'
 const prisma = new PrismaClient();
 const app = express()
 
-var target  = url.parse("http://ip.quotaguard.com/");
+var target  = url.parse("https://carhub-app-api-d5492a9b9be6.herokuapp.com");
 var options = {
     proxy: process.env.QUOTAGUARDSTATIC_URL,
     url: `${target.protocol}//${target.host}`,
