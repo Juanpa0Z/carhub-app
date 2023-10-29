@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx prisma migrate dev --name init && babel-watch index.js"
+    "start": "npx prisma migrate dev --name init && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
