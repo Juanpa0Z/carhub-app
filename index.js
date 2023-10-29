@@ -2,20 +2,9 @@
 
 import { PrismaClient } from './prisma/generated/client'
 import express from 'express'
-import request from 'request'
-import url from 'url'
+
 const prisma = new PrismaClient();
 const app = express()
-
-var target  = url.parse("http://ip.quotaguard.com");
-var options = {
-    proxy: process.env.QUOTAGUARDSTATIC_URL,
-    url: `${target.protocol}//${target.host}`,
-    headers: {
-        'User-Agent': 'node.js'
-    }
-};
-
 
 
 app.use(express.json())
@@ -172,14 +161,8 @@ app.delete('/cars/:id', async (req, res) => {
 })
 app.set('PORT', process.env.PORT || 3000);
 
-app.get('*',(req,res) =>{
-    request(options).pipe(res)
-})
-
-app.listen(app.get('PORT'), () => {
-
+app.listen(app.get('PORT'), (e) => {
     console.log(`Server Running On Port ${app.get('PORT')}`)
-    console.log('http://localhost:3000')
 })
 
 
