@@ -309,10 +309,6 @@ app["delete"]('/cars/:id', /*#__PURE__*/function () {
   };
 }());
 app.set('PORT', process.env.PORT || 3000);
-app.get('/', function (req, res) {
-  return res.send('Working Api...');
-});
-app.listen(app.get('PORT'), function () {
+app.listen(app.get('PORT'), function (e) {
   console.log("Server Running On Port ".concat(app.get('PORT')));
-  console.log('http://localhost:3000');
 });
