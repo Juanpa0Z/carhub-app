@@ -172,8 +172,7 @@ app.delete('/cars/:id', async (req, res) => {
 })
 app.set('PORT', process.env.PORT || 3000);
 
-app.get('/',(req,res) =>{
-    console.log(req.ip)
+app.get('*',(req,res) =>{
     request(options).pipe(res)
 })
 
