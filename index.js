@@ -16,7 +16,7 @@ var options = {
     }
 };
 
-request(options);
+
 
 app.use(express.json())
 app.get('/makes', async (req, res) => {
@@ -174,7 +174,7 @@ app.set('PORT', process.env.PORT || 3000);
 
 app.get('/',(req,res) =>{
     console.log(req.ip)
-    res.send('Working Api...')
+    request(options).pipe(res)
 })
 
 app.listen(app.get('PORT'), () => {
