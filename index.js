@@ -9,6 +9,17 @@ const app = express()
 
 app.use(express.json())
 
+app.get('*',(req,res,next) =>{
+    if(req.query.key != null && process.env.API_KEY == req.query.key){
+       next()
+    }else{
+     res.status(401).json({
+        'auth_message':'AUTH NOT ALLOW',
+        'error_code':401
+     })
+    }
+})
+
 app.get('/',(req,res) => res.send('Working Api...'))
 
 app.get('/makes', async (req, res) => {
