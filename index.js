@@ -91,7 +91,7 @@ app.get('/cars', async (req, res) => {
         }
     } : {};
     const SKIP = !isNaN(skip) ? Number(skip) : 0;
-    const LIMIT = !isNaN(limit) ? Number(limit) : 5;
+    const LIMIT = !isNaN(limit) ? Number(limit) : 10;
     try {
         let cars = await prisma.cars.findMany({
 
